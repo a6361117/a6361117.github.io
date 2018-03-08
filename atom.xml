@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>HackerFox</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://a6361117.github.io/"/>
+  <updated>2018-03-07T06:05:28.000Z</updated>
+  <id>http://a6361117.github.io/</id>
+  
+  <author>
+    <name>HackerFox</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PTES（渗透测试技术指南）</title>
+    <link href="http://a6361117.github.io/2018/03/07/PTES%EF%BC%88%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E6%9C%AF%E6%8C%87%E5%8D%97%EF%BC%89/"/>
+    <id>http://a6361117.github.io/2018/03/07/PTES（渗透测试技术指南）/</id>
+    <published>2018-03-07T05:09:51.000Z</published>
+    <updated>2018-03-07T06:05:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>PTES(渗透测试技术指南)<br>1前期交互阶段<br>2情报搜集<br>3威胁建模<br>4漏洞分析<br>5渗透攻击<br>6后渗透攻击<br>7报告<br><a id="more"></a></p><h1 id="一、前期交互阶段"><a href="#一、前期交互阶段" class="headerlink" title="一、前期交互阶段"></a>一、前期交互阶段</h1><h2 id="确定范围"><a href="#确定范围" class="headerlink" title="确定范围"></a>确定范围</h2><h3 id="如何确定范围"><a href="#如何确定范围" class="headerlink" title="如何确定范围"></a>如何确定范围</h3><h3 id="时间估计"><a href="#时间估计" class="headerlink" title="时间估计"></a>时间估计</h3><pre><code>I.预估整体项目的时间周期II.确定以小时计的额外技术支持</code></pre><h3 id="问答交谈"><a href="#问答交谈" class="headerlink" title="问答交谈"></a>问答交谈</h3><pre><code>I.对业务管理部门的问答交流II.对系统管理员的问答交流III.对IT支持的问答交流IV.与普通雇员的问答交流</code></pre><h3 id="范围勘定"><a href="#范围勘定" class="headerlink" title="范围勘定"></a>范围勘定</h3><pre><code>I.确定项目起止时间II.项目授权信件III.进入目标规划环节</code></pre><h3 id="确定IP和域名范围"><a href="#确定IP和域名范围" class="headerlink" title="确定IP和域名范围"></a>确定IP和域名范围</h3><pre><code>I.验证范围</code></pre><h3 id="处理第三方资源"><a href="#处理第三方资源" class="headerlink" title="处理第三方资源"></a>处理第三方资源</h3><pre><code>I.云服务II.ISP（Internet Service Provider,互联网服务提供商）III.网站宿主IV.MSSP（Managed Security Service Provider,安全托管服务提供商）V.服务器所在国家</code></pre><h3 id="定义可接受的社会工程学方法"><a href="#定义可接受的社会工程学方法" class="headerlink" title="定义可接受的社会工程学方法"></a>定义可接受的社会工程学方法</h3><h3 id="拒绝服务测试"><a href="#拒绝服务测试" class="headerlink" title="拒绝服务测试"></a>拒绝服务测试</h3><h3 id="确定支付细节"><a href="#确定支付细节" class="headerlink" title="确定支付细节"></a>确定支付细节</h3><h3 id="Delphi-Scoping-（Delphi范围）"><a href="#Delphi-Scoping-（Delphi范围）" class="headerlink" title="Delphi Scoping?（Delphi范围）"></a>Delphi Scoping?（Delphi范围）</h3><h2 id="2-目标规划"><a href="#2-目标规划" class="headerlink" title="2.目标规划"></a>2.目标规划</h2><h3 id="1）确定目标"><a href="#1）确定目标" class="headerlink" title="1）确定目标"></a>1）确定目标</h3><pre><code>I.首要目标II.额外目标        </code></pre><h3 id="2）业务分析"><a href="#2）业务分析" class="headerlink" title="2）业务分析"></a>2）业务分析</h3><pre><code>I.定义目标企业的安全成熟度        </code></pre><h3 id="3）需求分析"><a href="#3）需求分析" class="headerlink" title="3）需求分析"></a>3）需求分析</h3><h2 id="3-测试术语和定义"><a href="#3-测试术语和定义" class="headerlink" title="3.测试术语和定义"></a>3.测试术语和定义</h2><h3 id="1）渗透测试术语词汇表"><a href="#1）渗透测试术语词汇表" class="headerlink" title="1）渗透测试术语词汇表"></a>1）渗透测试术语词汇表</h3><h2 id="4-建立通讯渠道"><a href="#4-建立通讯渠道" class="headerlink" title="4.建立通讯渠道"></a>4.建立通讯渠道</h2><h3 id="1）紧急联络方式"><a href="#1）紧急联络方式" class="headerlink" title="1）紧急联络方式"></a>1）紧急联络方式</h3><h3 id="2）应急响应流程"><a href="#2）应急响应流程" class="headerlink" title="2）应急响应流程"></a>2）应急响应流程</h3><h3 id="3）进展报告周期"><a href="#3）进展报告周期" class="headerlink" title="3）进展报告周期"></a>3）进展报告周期</h3><h3 id="4）确定一个接口联络人"><a href="#4）确定一个接口联络人" class="headerlink" title="4）确定一个接口联络人"></a>4）确定一个接口联络人</h3><h3 id="5）PGP或其他加密方式"><a href="#5）PGP或其他加密方式" class="headerlink" title="5）PGP或其他加密方式"></a>5）PGP或其他加密方式</h3><h3 id="6）取得与外部第三方的联络方式（宿主…）"><a href="#6）取得与外部第三方的联络方式（宿主…）" class="headerlink" title="6）取得与外部第三方的联络方式（宿主…）"></a>6）取得与外部第三方的联络方式（宿主…）</h3><h2 id="5-交互确定规则"><a href="#5-交互确定规则" class="headerlink" title="5.交互确定规则"></a>5.交互确定规则</h2><h3 id="1）时间线"><a href="#1）时间线" class="headerlink" title="1）时间线"></a>1）时间线</h3><h3 id="2）地点"><a href="#2）地点" class="headerlink" title="2）地点"></a>2）地点</h3><h3 id="3）渗透攻击的控制基线"><a href="#3）渗透攻击的控制基线" class="headerlink" title="3）渗透攻击的控制基线"></a>3）渗透攻击的控制基线</h3><h3 id="4）敏感信息的披露"><a href="#4）敏感信息的披露" class="headerlink" title="4）敏感信息的披露"></a>4）敏感信息的披露</h3><h3 id="5）证据处理"><a href="#5）证据处理" class="headerlink" title="5）证据处理"></a>5）证据处理</h3><h3 id="6）例行的进展报告会"><a href="#6）例行的进展报告会" class="headerlink" title="6）例行的进展报告会"></a>6）例行的进展报告会</h3><blockquote><pre><code>I.计划 II.进展 III.问题        </code></pre></blockquote><h3 id="7）每天可进行渗透测试的时间"><a href="#7）每天可进行渗透测试的时间" class="headerlink" title="7）每天可进行渗透测试的时间"></a>7）每天可进行渗透测试的时间</h3><h3 id="8）避开的范围和规则"><a href="#8）避开的范围和规则" class="headerlink" title="8）避开的范围和规则"></a>8）避开的范围和规则</h3><h3 id="9）攻击授权"><a href="#9）攻击授权" class="headerlink" title="9）攻击授权"></a>9）攻击授权</h3><h2 id="6-存在的防御能力和技术"><a href="#6-存在的防御能力和技术" class="headerlink" title="6.存在的防御能力和技术"></a>6.存在的防御能力和技术</h2><h3 id="1）应急响应和监控"><a href="#1）应急响应和监控" class="headerlink" title="1）应急响应和监控"></a>1）应急响应和监控</h3><h2 id="7-保护级自己"><a href="#7-保护级自己" class="headerlink" title="7.保护级自己"></a>7.保护级自己</h2><h3 id="1）准备你的测试系统"><a href="#1）准备你的测试系统" class="headerlink" title="1）准备你的测试系统"></a>1）准备你的测试系统</h3><h3 id="2）前期交互检查表"><a href="#2）前期交互检查表" class="headerlink" title="2）前期交互检查表"></a>2）前期交互检查表</h3><h3 id="3）数据包监听"><a href="#3）数据包监听" class="headerlink" title="3）数据包监听"></a>3）数据包监听</h3><h3 id="4）后期交互检查表"><a href="#4）后期交互检查表" class="headerlink" title="4）后期交互检查表"></a>4）后期交互检查表</h3><h1 id="二、情报搜集"><a href="#二、情报搜集" class="headerlink" title="二、情报搜集"></a>二、情报搜集</h1><h2 id="1-目标选择"><a href="#1-目标选择" class="headerlink" title="1.目标选择"></a>1.目标选择</h2><h2 id="2-开放渠道情报"><a href="#2-开放渠道情报" class="headerlink" title="2.开放渠道情报"></a>2.开放渠道情报</h2><h3 id="1）企业"><a href="#1）企业" class="headerlink" title="1）企业"></a>1）企业</h3><pre><code>    I.物理        I）位置        II）分布        III）关系网                II.逻辑        I）业务伙伴        II）竞争对手        III）接触关联网        IV）物业服务轮廓图        V）产品线        VI）垂直市场        VII）销售银行账号        VIII）会议安排        IX）关键企业日期        X）招聘岗位        XI）慈善事业关系                III.组织架构                IV.电子            V.财务        2）个人    I.雇员        I）履历背景        II）社交关系网        III）互联网足迹        IV）博客        V）最新动态        VI）物理位置        VII）移动足迹        VIII）工资银行账户</code></pre><p>3.白盒搜集<br>    1）场内搜集<br>    2）场外搜集</p><p>4.人力资源情报<br>    1）关键雇员<br>    2）合作伙伴/供应商<br>    3）社会工程学</p><p>5.踩点<br>    1）外部踩点<br>        I.识别客户范围<br>        II.被动信息搜集<br>        III.主动探测<br>        IV.建立目标列表<br>            I）确定版本信息<br>            识别补丁级别<br>            搜索脆弱的web应用<br>            确定封禁阀值<br>            出错信息<br>            找出攻击的脆弱端口<br>            过时系统<br>            虚拟化平台和虚拟机<br>            存储基础设施<br>    2）内部踩点<br>        主动探测<br>            端口扫描<br>            SNMP探查<br>            区域传送<br>            SMTP反弹攻击<br>            解析DNS与递归DNS服务器<br>            旗标攫取<br>            VoIP扫描<br>            ARP探索<br>            DNS探索<br>        被动信息搜集<br>        建立目标列表</p><p>6.识别防御机制<br>    网络防御机制<br>        简单包过滤<br>        流量整形设备<br>        信息泄露防护系统<br>        加密/隧道机制<br>    系统防御机制<br>        堆栈保护<br>        白名单列表<br>        反病毒软件/过滤/行为检测<br>        信息泄露防护系统<br>    应用层防御机制<br>        识别应用层防御<br>        编码选项<br>        可能潜在的绕过机制<br>        白名单区域<br>    存储防御机制<br>        硬盘保护卡<br>        …</p><h1 id="三、威胁建模"><a href="#三、威胁建模" class="headerlink" title="三、威胁建模"></a>三、威胁建模</h1><pre><code>业务资产分析    死人身份信息，死人健康信息和信用卡信息    定义和找出组织的只是产权    企业王国的关键资产        商业机密        研究和开发        市场计划        企业银行/信用卡账户        客户资料        供应商资料        关键雇员信息            董事会            中间管理层            系统管理层            工程师            技术专家            人力资源            总裁助理                业务流程分析    使用的基础设施    人力基础设施    使用的第三方平台        威胁对手/社区分析    内部人员        董事会        中间管理层        系统管理层        开发者        工程师        技术专家            竞争对手    国家政府    有组织的犯罪团队    周末工作的网际武士    威胁能力分析    分析使用的工具    可用的相关渗透代码和攻击载荷    通讯机制（加密，下载站点，命令控制，安全宿主站点）找出相关公司备攻击的新闻</code></pre><h1 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h1><pre><code>测试    主动        自动化技术            通用漏洞扫描                基于端口                基于服务                旗标攫取            web应用扫描器                通用的应用层漏洞扫描                目录列举和暴力破解                web服务版本和漏洞辨识                存有漏洞的方法            网络漏洞扫描器                VPN                IPv6            语音网络扫描                战争拨号                VoIP扫描        手工方法            针对性连接        躲避技术            多源探测            IDS逃逸            可变的速度            可变的范围    被动        自动化技术            从内部获取的元数据分析            流量监控（如POF等）        手工方法            针对性连接验证    扫描器结果关联分析    手工验证/协议相关        VPN            指纹识别        Citrix            查点        DNS        Web        Mail    攻击路径        创建攻击树    隔离实验室中试验    效果确认        手工验证与评审研究    对公开资源的研究        exploit-db        Google Hacking        渗透代码网站        通用/缺省口令        厂商的漏洞警告    私有环境下的研究        建立一个复制环境        测试安全配置        找出潜在攻击路径</code></pre><h1 id="五、渗透攻击"><a href="#五、渗透攻击" class="headerlink" title="五、渗透攻击"></a>五、渗透攻击</h1><p>精准打击<br>绕过防御机制<br>    反病毒<br>        编码<br>        加壳<br>        白名单绕过<br>        进程注入<br>        纯内存方式<br>    人工检查<br>    网络入侵防御系统<br>    DEP<br>    ASLR<br>    VA+NX（linux）<br>    w^x(openBSD)<br>    栈保护<br>定制渗透攻击路径<br>    最佳攻击路径<br>    零日攻击<br>        Fuzzing<br>        逆向分析<br>        流量分析<br>    公开渗透代码的定制<br>    物理访问<br>        认为因素<br>        主机访问<br>        USB接口访问<br>        防火墙<br>        RFID<br>        中间人攻击<br>        路由协议<br>        VLAN划分<br>        其他硬件（键盘记录器等）<br>    接近的访问(WiFi)<br>        攻击AP<br>        攻击用户<br>        电子频谱分析<br>    拒绝服务/勒索<br>    Web<br>        SQLi<br>        XSS<br>        CSRF<br>        信息泄露<br>        其他OWASP TOP10<br>绕过检测机制<br>    FW/WA/IDS/IPS绕过<br>    绕过管理员<br>    绕过数据泄露防护系统<br>触发攻击响应控制措施<br>渗透代码测试<br>攻击类型<br>    客户端攻击<br>        Phishing<br>    服务端攻击<br>    带外攻击</p><h1 id="六、后渗透攻击"><a href="#六、后渗透攻击" class="headerlink" title="六、后渗透攻击"></a>六、后渗透攻击</h1><p>基础设施分析<br>    当前网络连接分析<br>    网络接口查询<br>    VPN检测<br>    路由检测，包括静态路由<br>    网络邻居与系统探查<br>    使用的网络协议<br>    使用的代理服务器<br>    网络拓扑<br>高价值目标识别<br>掠夺敏感信息<br>    视频监控器和摄像头<br>    从可用通道获取敏感数据<br>    查找共享目录<br>    音频监控<br>        VoIP<br>        麦克风记录<br>    高价值文件<br>    数据库查点<br>    WiFi<br>    源代码库<br>    识别出客户管理应用<br>    备份<br>        本地备份文件<br>        中央备份服务器<br>        远程备份方案<br>        录音存储备份<br>业务影响攻击<br>    业务盈利途径<br>    窃取业务盈利<br>进一步对基础设施的渗透<br>    僵尸网络<br>    入侵内网<br>    检查历史/日志<br>        Windows<br>        Linux<br>        浏览器<br>掩踪灭迹<br>    记录渗透攻击过程步骤<br>    确保清理现场<br>    删除测试数据<br>    对证据进行打包和加密<br>    必要时从备份恢复数据<br>持续性存在<br>    自启动恶意代码<br>    反向连接<br>    Rootkit<br>        用户模式<br>        内核模式<br>    命令控制媒介（http,dns,tcp,icmp）<br>    后门<br>    植入代码<br>    口令保护的VPN</p><h1 id="七、报告"><a href="#七、报告" class="headerlink" title="七、报告"></a>七、报告</h1><p>执行层面的报告<br>    业务影响<br>    定制<br>    与业务部门的谈话<br>    影响底线<br>    策略方法路径<br>    成熟度模型<br>    风险评估术语说明<br>    攻击过程与Gant图时间线<br>    风险评估<br>        评估事故频率<br>            可能的事件频率<br>            估计威胁能力（从阶段3威胁建模阶段而来）<br>            评估控制措施强度（从阶段6）<br>            安全漏洞与弱点评估（从阶段5）<br>            所需技能要求<br>            所需访问权限等级<br>        每次事故的损失估计<br>        风险推算<br>            威胁<br>            漏洞<br>            组合风险值<br>技术报告<br>    识别系统性问题和技术根源分析<br>    渗透测试评价指标<br>        范围内的系统数量<br>        范围内的应用场景数量<br>        范围内的业务流程数量<br>        被检测到的次数<br>        漏洞/漏洞主机数量<br>        被攻陷的系统数量<br>        成功攻击的应用场景数量<br>        攻陷的业务流程次数<br>        …<br>    技术发现<br>        描述<br>        截图<br>        抓取的请求与响应<br>        概念验证性样本代码<br>    可重现结果<br>        测试用例<br>        触发错误<br>    应急响应和监控能力<br>        情报收集阶段<br>        漏洞分析阶段<br>        渗透攻击阶段<br>        后渗透攻击阶段<br>        其他方面（如对第三方的通知等）<br>    标准组成部分<br>        方法体系<br>        目标<br>        范围<br>        发现摘要<br>        风险评定的术语附录<br>提交报告<br>    初始报告<br>    客户对报告的评审结果<br>    对报告的修订<br>    最终报告<br>    报告初稿与最终报告的版本管理<br>    展示报告<br>        技术层面<br>        管理层面<br>    工作例会/培训<br>        差距分析（技能/培训）<br>    保存证据和其他非产权的数据<br>    纠正过程<br>        分流<br>        安全成熟度模型<br>        工作进展计划<br>        长期解决方案<br>        定义限制条件<br>    开发定制工具</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;PTES(渗透测试技术指南)&lt;br&gt;1前期交互阶段&lt;br&gt;2情报搜集&lt;br&gt;3威胁建模&lt;br&gt;4漏洞分析&lt;br&gt;5渗透攻击&lt;br&gt;6后渗透攻击&lt;br&gt;7报告&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="渗透测试" scheme="http://a6361117.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="文档" scheme="http://a6361117.github.io/tags/%E6%96%87%E6%A1%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Github+Hexo搭建一个博客</title>
+    <link href="http://a6361117.github.io/2018/03/06/%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://a6361117.github.io/2018/03/06/使用github搭建一个博客/</id>
+    <published>2018-03-06T09:06:27.000Z</published>
+    <updated>2018-03-08T11:32:38.505Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天教给大家的是一个使用Github的page功能来搭建一个属于自己的个人博客，</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;今天教给大家的是一个使用Github的page功能来搭建一个属于自己的个人博客，&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="Github" scheme="http://a6361117.github.io/tags/Github/"/>
+    
+      <category term="Hexo" scheme="http://a6361117.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>

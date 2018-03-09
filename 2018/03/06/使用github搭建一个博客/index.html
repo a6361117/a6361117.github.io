@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://a6361117.github.io/images/setting.png">
 <meta property="og:image" content="http://a6361117.github.io/images/add_ssh_key.png">
 <meta property="og:image" content="http://a6361117.github.io/images/ssh_key.png">
-<meta property="og:updated_time" content="2018-03-09T12:57:42.758Z">
+<meta property="og:updated_time" content="2018-03-09T13:00:02.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Github+Hexo搭建一个博客">
 <meta name="twitter:description" content="今天教给大家的是一个使用Github的Pages功能来搭建一个属于自己的个人博客，博客的模板我选用的是HEXO，主题选择MOxFIVE开发的yelee模板。1.安装需要使用的工具git,npm,hexo,nodejs2.新建github存储库3.生成连接github的公私钥4.上传公钥到github上5.测试github连接6.安装hexo,生成博客7.发布hexo博客">
@@ -316,6 +316,7 @@
           
         <p>今天教给大家的是一个使用<a href="https://github.com" target="_blank" rel="noopener">Github</a>的<a href="https://pages.github.com" target="_blank" rel="noopener">Pages</a>功能来搭建一个属于自己的个人博客，博客的模板我选用的是HEXO，主题选择<a href="https://github.com/MOxFIVE" target="_blank" rel="noopener">MOxFIVE</a>开发的<a href="https://github.com/MOxFIVE/hexo-theme-yelee.git" target="_blank" rel="noopener">yelee</a>模板。<br>1.安装需要使用的工具git,npm,hexo,nodejs<br>2.新建github存储库<br>3.生成连接github的公私钥<br>4.上传公钥到github上<br>5.测试github连接<br>6.安装hexo,生成博客<br>7.发布hexo博客</p>
 <a id="more"></a>
+<hr>
 <h3 id="一、安装工具"><a href="#一、安装工具" class="headerlink" title="一、安装工具"></a>一、安装工具</h3><ul>
 <li>在搭建HEXO站点之前我们需要准备一些东西，在系统上安装好git，npm，nodejs，安装步骤如下：</li>
 </ul>
@@ -327,20 +328,24 @@
 <li>在我的系统上默认是安装了nondejs的，但是并没有npm这个工具，而npm这个工具在之后安装hexo网站的时候是需要使用到的，所以我们可以去网站上下载nodejs的安装脚本行安装。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~<span class="comment"># curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -</span></span><br><span class="line">root@kali:~<span class="comment"># sudo apt install nodejs -y</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<hr>
 <h3 id="二、新建github存储库"><a href="#二、新建github存储库" class="headerlink" title="二、新建github存储库"></a>二、新建github存储库</h3><h4 id="1-新建存储库"><a href="#1-新建存储库" class="headerlink" title="1.新建存储库"></a>1.新建存储库</h4><ul>
 <li>我们登录github之后，通过右上角的+号添加一个新的存储库。<br><img src="/images/new_repository.png" alt="new repository"></li>
 </ul>
 <h4 id="2-存储库的名称为自己的用户名加上github-io"><a href="#2-存储库的名称为自己的用户名加上github-io" class="headerlink" title="2.存储库的名称为自己的用户名加上github.io"></a>2.存储库的名称为自己的用户名加上github.io</h4><p><img src="/images/create_repository.png" alt="create repository"></p>
+<hr>
 <h3 id="三、生成连接github的公私钥"><a href="#三、生成连接github的公私钥" class="headerlink" title="三、生成连接github的公私钥"></a>三、生成连接github的公私钥</h3><h4 id="1-建立完存储库后添加ssh密钥到github上方便hexo发布"><a href="#1-建立完存储库后添加ssh密钥到github上方便hexo发布" class="headerlink" title="1.建立完存储库后添加ssh密钥到github上方便hexo发布"></a>1.建立完存储库后添加ssh密钥到github上方便hexo发布</h4><p><img src="/images/setting.png" alt="setting"></p>
 <h4 id="2-生成新的ssh公私密钥对"><a href="#2-生成新的ssh公私密钥对" class="headerlink" title="2.生成新的ssh公私密钥对"></a>2.生成新的ssh公私密钥对</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~<span class="comment"># cd ~/.ssh</span></span><br><span class="line">root@kali:~/.ssh<span class="comment"># ssh-keygen -t rsa -b 4096 -C "your_email@example.com"</span></span><br></pre></td></tr></table></figure>
 <h4 id="3-将以-pub结尾的公钥内容复制到github上"><a href="#3-将以-pub结尾的公钥内容复制到github上" class="headerlink" title="3.将以.pub结尾的公钥内容复制到github上"></a>3.将以.pub结尾的公钥内容复制到github上</h4><p><img src="/images/add_ssh_key.png" alt="add ssh key"></p>
 <h4 id="4-查看github上的密钥信息"><a href="#4-查看github上的密钥信息" class="headerlink" title="4.查看github上的密钥信息"></a>4.查看github上的密钥信息</h4><p><img src="/images/ssh_key.png" alt="ssh key"></p>
+<hr>
 <h3 id="四、使用ssh连接github"><a href="#四、使用ssh连接github" class="headerlink" title="四、使用ssh连接github"></a>四、使用ssh连接github</h3><h4 id="1-测试密钥上传是否成功"><a href="#1-测试密钥上传是否成功" class="headerlink" title="1.测试密钥上传是否成功"></a>1.测试密钥上传是否成功</h4><ul>
 <li>当我们第一次使用ssh连接github的时候，会需要确认是否连接，写yes就可以了<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~<span class="comment"># ssh -T git@github.com</span></span><br><span class="line">Hi a6361117! You have successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="2-确认连接之后设置下用户信息，分别是用户名和E-mail。"><a href="#2-确认连接之后设置下用户信息，分别是用户名和E-mail。" class="headerlink" title="2.确认连接之后设置下用户信息，分别是用户名和E-mail。"></a>2.确认连接之后设置下用户信息，分别是用户名和E-mail。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~<span class="comment"># git config --global user.name "username"</span></span><br><span class="line">root@kali:~<span class="comment"># git config --global user.email "You E-mail"</span></span><br></pre></td></tr></table></figure>
 <h4 id="3-下载新建的github存储库"><a href="#3-下载新建的github存储库" class="headerlink" title="3.下载新建的github存储库"></a>3.下载新建的github存储库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~<span class="comment"># git clone https://github.com/username/username.github.io.git</span></span><br></pre></td></tr></table></figure>
+<hr>
 <h3 id="五、安装hexo，并发布博客"><a href="#五、安装hexo，并发布博客" class="headerlink" title="五、安装hexo，并发布博客"></a>五、安装hexo，并发布博客</h3><h4 id="1-安装hexo非常的简单，只需要使用npm来安装。"><a href="#1-安装hexo非常的简单，只需要使用npm来安装。" class="headerlink" title="1.安装hexo非常的简单，只需要使用npm来安装。"></a>1.安装hexo非常的简单，只需要使用npm来安装。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~<span class="comment"># cd username.github.io/</span></span><br><span class="line">root@kali:~/username.github.io<span class="comment"># npm install hexo-cli -g</span></span><br></pre></td></tr></table></figure>
 <h4 id="2-下载安装hexo博客。"><a href="#2-下载安装hexo博客。" class="headerlink" title="2.下载安装hexo博客。"></a>2.下载安装hexo博客。</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/username.github.io<span class="comment"># hexo init blog</span></span><br><span class="line">root@kali:~/username.github.io<span class="comment"># cd blog</span></span><br><span class="line">root@kali:~/username.github.io/blog<span class="comment"># npm install</span></span><br></pre></td></tr></table></figure>
 <h4 id="3-生成博客"><a href="#3-生成博客" class="headerlink" title="3.生成博客"></a>3.生成博客</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~/username.github.io/blog<span class="comment"># hexo g</span></span><br></pre></td></tr></table></figure>
@@ -357,7 +362,7 @@
         <p><span>本文标题:</span><a href="/2018/03/06/使用github搭建一个博客/">使用Github+Hexo搭建一个博客</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">HackerFox</a></p>
         <p><span>发布时间:</span>2018-03-06, 17:06:27</p>
-        <p><span>最后更新:</span>2018-03-09, 20:57:42</p>
+        <p><span>最后更新:</span>2018-03-09, 21:00:02</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/03/06/使用github搭建一个博客/" title="使用Github+Hexo搭建一个博客">http://a6361117.github.io/2018/03/06/使用github搭建一个博客/</a>
             <span class="copy-path" data-clipboard-text="原文: http://a6361117.github.io/2018/03/06/使用github搭建一个博客/　　作者: HackerFox" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

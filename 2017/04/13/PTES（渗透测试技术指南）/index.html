@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="HackerFox" />
+
+
+
+<meta name="description" content="找到了一个关于渗透测试指南的脑图，就找了下有没有中文的，还真给我找到了，就顺便整理成了TXT的格式放到了博客上给大家看。PTES(渗透测试技术指南)1前期交互阶段2情报搜集3威胁建模4漏洞分析5渗透攻击6后渗透攻击7报告">
+<meta name="keywords" content="渗透测试,文档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PTES（渗透测试技术指南:诸葛建伟翻译）">
+<meta property="og:url" content="http://a6361117.github.io/2017/04/13/PTES（渗透测试技术指南）/index.html">
+<meta property="og:site_name" content="HackerFox">
+<meta property="og:description" content="找到了一个关于渗透测试指南的脑图，就找了下有没有中文的，还真给我找到了，就顺便整理成了TXT的格式放到了博客上给大家看。PTES(渗透测试技术指南)1前期交互阶段2情报搜集3威胁建模4漏洞分析5渗透攻击6后渗透攻击7报告">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-10T08:13:34.631Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PTES（渗透测试技术指南:诸葛建伟翻译）">
+<meta name="twitter:description" content="找到了一个关于渗透测试指南的脑图，就找了下有没有中文的，还真给我找到了，就顺便整理成了TXT的格式放到了博客上给大家看。PTES(渗透测试技术指南)1前期交互阶段2情报搜集3威胁建模4漏洞分析5渗透攻击6后渗透攻击7报告">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="HackerFox" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/hackerfox.png">
+
+
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>PTES（渗透测试技术指南:诸葛建伟翻译） | HackerFox</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: false,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: 
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/hackerfox.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">HackerFox</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:zhu6361117@me.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/hackerfox" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://a6361117.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/users/3e5028f48f7f" title="简书"></a>
+                            
+                                <a class="fa LOFTER" href="http://hackerfox.lofter.com/" title="LOFTER"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文档/">文档</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/渗透测试/">渗透测试</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">HackerFox</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/hackerfox.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">HackerFox</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:zhu6361117@me.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/hackerfox" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://a6361117.github.io" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/users/3e5028f48f7f" title="简书"></a>
+                            
+                                <a class="fa LOFTER" target="_blank" href="http://hackerfox.lofter.com/" title="LOFTER"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-PTES（渗透测试技术指南）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/04/13/PTES（渗透测试技术指南）/" class="article-date">
+      <time datetime="2017-04-13T05:09:51.000Z" itemprop="datePublished">2017-04-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PTES（渗透测试技术指南:诸葛建伟翻译）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文档/">文档</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透测试/">渗透测试</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>找到了一个关于渗透测试指南的脑图，就找了下有没有中文的，还真给我找到了，就顺便整理成了TXT的格式放到了博客上给大家看。<br>PTES(渗透测试技术指南)<br>1前期交互阶段<br>2情报搜集<br>3威胁建模<br>4漏洞分析<br>5渗透攻击<br>6后渗透攻击<br>7报告<br><a id="more"></a></p>
+<h2 id="一、前期交互阶段"><a href="#一、前期交互阶段" class="headerlink" title="一、前期交互阶段"></a>一、前期交互阶段</h2><h3 id="1-确定范围"><a href="#1-确定范围" class="headerlink" title="1.确定范围"></a>1.确定范围</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">1）如何确定范围</span><br><span class="line">2）时间估计</span><br><span class="line">	I.预估整体项目的时间周期</span><br><span class="line">	II.确定以小时计的额外技术支持</span><br><span class="line">3）问答交谈</span><br><span class="line">	I.对业务管理部门的问答交流</span><br><span class="line">	II.对系统管理员的问答交流</span><br><span class="line">	III.对IT支持的问答交流</span><br><span class="line">	IV.与普通雇员的问答交流</span><br><span class="line">4）范围勘定</span><br><span class="line">	I.确定项目起止时间</span><br><span class="line">	II.项目授权信件</span><br><span class="line">	III.进入目标规划环节</span><br><span class="line">5）确定IP和域名范围</span><br><span class="line">	I.验证范围</span><br><span class="line">6）处理第三方资源</span><br><span class="line">	I.云服务</span><br><span class="line">	II.ISP（Internet Service Provider,互联网服务提供商）</span><br><span class="line">	III.网站宿主</span><br><span class="line">	IV.MSSP（Managed Security Service Provider,安全托管服务提供商）</span><br><span class="line">	V.服务器所在国家</span><br><span class="line">7）定义可接受的社会工程学方法</span><br><span class="line">8）拒绝服务测试</span><br><span class="line">9）确定支付细节</span><br><span class="line">10）Delphi Scoping?（Delphi范围）</span><br></pre></td></tr></table></figure>
+<h3 id="2-目标规划"><a href="#2-目标规划" class="headerlink" title="2.目标规划"></a>2.目标规划</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1）确定目标</span><br><span class="line">	I.首要目标</span><br><span class="line">	II.额外目标</span><br><span class="line">2）业务分析</span><br><span class="line">	I.定义目标企业的安全成熟度</span><br><span class="line">3）需求分析</span><br></pre></td></tr></table></figure>
+<h3 id="3-测试术语和定义"><a href="#3-测试术语和定义" class="headerlink" title="3.测试术语和定义"></a>3.测试术语和定义</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1）渗透测试术语词汇表</span><br></pre></td></tr></table></figure>
+<h3 id="4-建立通讯渠道"><a href="#4-建立通讯渠道" class="headerlink" title="4.建立通讯渠道"></a>4.建立通讯渠道</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1）紧急联络方式</span><br><span class="line">2）应急响应流程</span><br><span class="line">3）进展报告周期</span><br><span class="line">4）确定一个接口联络人</span><br><span class="line">5）PGP或其他加密方式</span><br><span class="line">6）取得与外部第三方的联络方式（宿主...）</span><br></pre></td></tr></table></figure>
+<h3 id="5-交互确定规则"><a href="#5-交互确定规则" class="headerlink" title="5.交互确定规则"></a>5.交互确定规则</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1）时间线</span><br><span class="line">2）地点</span><br><span class="line">3）渗透攻击的控制基线</span><br><span class="line">4）敏感信息的披露</span><br><span class="line">5）证据处理</span><br><span class="line">6）例行的进展报告会</span><br><span class="line">	I.计划</span><br><span class="line">	II.进展</span><br><span class="line">	III.问题</span><br><span class="line">7）每天可进行渗透测试的时间</span><br><span class="line">8）避开的范围和规则</span><br><span class="line">9）攻击授权</span><br></pre></td></tr></table></figure>
+<h3 id="6-存在的防御能力和技术"><a href="#6-存在的防御能力和技术" class="headerlink" title="6.存在的防御能力和技术"></a>6.存在的防御能力和技术</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1）应急响应和监控</span><br></pre></td></tr></table></figure>
+<h3 id="7-保护级自己"><a href="#7-保护级自己" class="headerlink" title="7.保护级自己"></a>7.保护级自己</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1）准备你的测试系统</span><br><span class="line">2）前期交互检查表</span><br><span class="line">3）数据包监听</span><br><span class="line">4）后期交互检查表</span><br></pre></td></tr></table></figure>
+<h2 id="二、情报搜集"><a href="#二、情报搜集" class="headerlink" title="二、情报搜集"></a>二、情报搜集</h2><h3 id="1-目标选择"><a href="#1-目标选择" class="headerlink" title="1.目标选择"></a>1.目标选择</h3><h3 id="2-开放渠道情报"><a href="#2-开放渠道情报" class="headerlink" title="2.开放渠道情报"></a>2.开放渠道情报</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">1）企业</span><br><span class="line">	I.物理</span><br><span class="line">		I）位置</span><br><span class="line">		II）分布</span><br><span class="line">		III）关系网</span><br><span class="line">	II.逻辑</span><br><span class="line">		I）业务伙伴</span><br><span class="line">		II）竞争对手</span><br><span class="line">		III）接触关联网</span><br><span class="line">		IV）物业服务轮廓图</span><br><span class="line">		V）产品线</span><br><span class="line">		VI）垂直市场</span><br><span class="line">		VII）销售银行账号</span><br><span class="line">		VIII）会议安排</span><br><span class="line">		IX）关键企业日期</span><br><span class="line">		X）招聘岗位</span><br><span class="line">		XI）慈善事业关系</span><br><span class="line">	III.组织架构</span><br><span class="line">	IV.电子</span><br><span class="line">	V.财务</span><br><span class="line">2）个人</span><br><span class="line">	I.雇员</span><br><span class="line">		I）履历背景</span><br><span class="line">		II）社交关系网</span><br><span class="line">		III）互联网足迹</span><br><span class="line">		IV）博客</span><br><span class="line">		V）最新动态</span><br><span class="line">		VI）物理位置</span><br><span class="line">		VII）移动足迹</span><br><span class="line">		VIII）工资银行账户</span><br></pre></td></tr></table></figure>
+<h3 id="3-白盒搜集"><a href="#3-白盒搜集" class="headerlink" title="3.白盒搜集"></a>3.白盒搜集</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1）场内搜集</span><br><span class="line">2）场外搜集</span><br></pre></td></tr></table></figure>
+<h3 id="4-人力资源情报"><a href="#4-人力资源情报" class="headerlink" title="4.人力资源情报"></a>4.人力资源情报</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）关键雇员</span><br><span class="line">2）合作伙伴/供应商</span><br><span class="line">3）社会工程学</span><br></pre></td></tr></table></figure>
+<h3 id="5-踩点"><a href="#5-踩点" class="headerlink" title="5.踩点"></a>5.踩点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">1）外部踩点</span><br><span class="line">	I.识别客户范围</span><br><span class="line">	II.被动信息搜集</span><br><span class="line">	III.主动探测</span><br><span class="line">	IV.建立目标列表</span><br><span class="line">		I）确定版本信息</span><br><span class="line">		II）识别补丁级别</span><br><span class="line">		III）搜索脆弱的web应用</span><br><span class="line">		IV）确定封禁阀值</span><br><span class="line">		V）出错信息</span><br><span class="line">		VI）找出攻击的脆弱端口</span><br><span class="line">		VII）过时系统</span><br><span class="line">		VIII）虚拟化平台和虚拟机</span><br><span class="line">		IX）存储基础设施</span><br><span class="line">2）内部踩点</span><br><span class="line">	I.主动探测</span><br><span class="line">		I）端口扫描</span><br><span class="line">		II）SNMP探查</span><br><span class="line">		III）区域传送</span><br><span class="line">		IV）SMTP反弹攻击</span><br><span class="line">		V）解析DNS与递归DNS服务器</span><br><span class="line">		VI）旗标攫取</span><br><span class="line">		VII）VoIP扫描</span><br><span class="line">		VIII）ARP探索</span><br><span class="line">		IX）DNS探索</span><br><span class="line">	II.被动信息搜集</span><br><span class="line">	III.建立目标列表</span><br></pre></td></tr></table></figure>
+<h3 id="6-识别防御机制"><a href="#6-识别防御机制" class="headerlink" title="6.识别防御机制"></a>6.识别防御机制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1）网络防御机制</span><br><span class="line">	I.简单包过滤</span><br><span class="line">	II.流量整形设备</span><br><span class="line">	II.信息泄露防护系统</span><br><span class="line">	IV.加密/隧道机制</span><br><span class="line">2）系统防御机制</span><br><span class="line">	I.堆栈保护</span><br><span class="line">	II.白名单列表</span><br><span class="line">	III.反病毒软件/过滤/行为检测</span><br><span class="line">	IV.信息泄露防护系统</span><br><span class="line">3）应用层防御机制</span><br><span class="line">	I.识别应用层防御</span><br><span class="line">	II.编码选项</span><br><span class="line">	III.可能潜在的绕过机制</span><br><span class="line">	IV.白名单区域</span><br><span class="line">4）存储防御机制</span><br><span class="line">	I.硬盘保护卡</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
+<h2 id="三、威胁建模"><a href="#三、威胁建模" class="headerlink" title="三、威胁建模"></a>三、威胁建模</h2><h3 id="1-业务资产分析"><a href="#1-业务资产分析" class="headerlink" title="1.业务资产分析"></a>1.业务资产分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1）私人身份信息，私人健康信息和信用卡信息</span><br><span class="line">2）定义和找出组织的只是产权</span><br><span class="line">3）企业王国的关键资产</span><br><span class="line">	I.商业机密</span><br><span class="line">	II.研究和开发</span><br><span class="line">	III.市场计划</span><br><span class="line">	IV.企业银行/信用卡账户</span><br><span class="line">	V.客户资料</span><br><span class="line">	VI.供应商资料</span><br><span class="line">	VII.关键雇员信息</span><br><span class="line">		I）董事会</span><br><span class="line">		II）中间管理层</span><br><span class="line">		III）系统管理层</span><br><span class="line">		IV）工程师</span><br><span class="line">		V）技术专家</span><br><span class="line">		VI）人力资源</span><br><span class="line">		VII）总裁助理</span><br></pre></td></tr></table></figure>
+<h3 id="2-业务流程分析"><a href="#2-业务流程分析" class="headerlink" title="2.业务流程分析"></a>2.业务流程分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）使用的基础设施</span><br><span class="line">2）人力基础设施</span><br><span class="line">3）使用的第三方平台</span><br></pre></td></tr></table></figure>
+<h3 id="3-威胁对手-社区分析"><a href="#3-威胁对手-社区分析" class="headerlink" title="3.威胁对手/社区分析"></a>3.威胁对手/社区分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1）内部人员</span><br><span class="line">	I.董事会</span><br><span class="line">	II.中间管理层</span><br><span class="line">	III.系统管理层</span><br><span class="line">	IV.开发者</span><br><span class="line">	V.工程师</span><br><span class="line">	VI.技术专家</span><br><span class="line">2）竞争对手</span><br><span class="line">3）国家政府</span><br><span class="line">4）有组织的犯罪团队</span><br><span class="line">5）周末工作的网际武士</span><br></pre></td></tr></table></figure>
+<h3 id="4-威胁能力分析"><a href="#4-威胁能力分析" class="headerlink" title="4.威胁能力分析"></a>4.威胁能力分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）分析使用的工具</span><br><span class="line">2）可用的相关渗透代码和攻击载荷</span><br><span class="line">3）通讯机制（加密，下载站点，命令控制，安全宿主站点）</span><br></pre></td></tr></table></figure>
+<h3 id="5-找出相关公司备攻击的新闻"><a href="#5-找出相关公司备攻击的新闻" class="headerlink" title="5.找出相关公司备攻击的新闻"></a>5.找出相关公司备攻击的新闻</h3><h2 id="四、漏洞分析"><a href="#四、漏洞分析" class="headerlink" title="四、漏洞分析"></a>四、漏洞分析</h2><h3 id="1-测试"><a href="#1-测试" class="headerlink" title="1.测试"></a>1.测试</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">1）主动</span><br><span class="line">	I.自动化技术</span><br><span class="line">		I）通用漏洞扫描</span><br><span class="line">			基于端口</span><br><span class="line">			基于服务</span><br><span class="line">			旗标攫取</span><br><span class="line">		II）web应用扫描器</span><br><span class="line">			通用的应用层漏洞扫描</span><br><span class="line">			目录列举和暴力破解</span><br><span class="line">			web服务版本和漏洞辨识</span><br><span class="line">			存有漏洞的方法</span><br><span class="line">		III）网络漏洞扫描器</span><br><span class="line">			VPN</span><br><span class="line">			IPv6</span><br><span class="line">		IV）语音网络扫描</span><br><span class="line">			战争拨号</span><br><span class="line">			VoIP扫描</span><br><span class="line">		II.手工方法</span><br><span class="line">			I）针对性连接</span><br><span class="line">		III.躲避技术</span><br><span class="line">			I）多源探测</span><br><span class="line">			II）IDS逃逸</span><br><span class="line">			III）可变的速度</span><br><span class="line">			IV）可变的范围</span><br><span class="line">2）被动</span><br><span class="line">	I.自动化技术</span><br><span class="line">		I）从内部获取的元数据分析</span><br><span class="line">		II）流量监控（如POF等）</span><br><span class="line">	II.手工方法</span><br><span class="line">			I）针对性连接</span><br></pre></td></tr></table></figure>
+<h3 id="2-验证"><a href="#2-验证" class="headerlink" title="2.验证"></a>2.验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1）扫描器结果关联分析</span><br><span class="line">2）手工验证/协议相关</span><br><span class="line">	I.VPN</span><br><span class="line">		I）指纹识别</span><br><span class="line">	II.Citrix</span><br><span class="line">		I）查点</span><br><span class="line">	III.DNS</span><br><span class="line">	IV.Web</span><br><span class="line">	V.Mail</span><br><span class="line">3）攻击路径</span><br><span class="line">	I.创建攻击树</span><br><span class="line">4）隔离实验室中试验</span><br><span class="line">5）效果确认</span><br><span class="line">	I.手工验证与评审</span><br></pre></td></tr></table></figure>
+<h3 id="3-研究"><a href="#3-研究" class="headerlink" title="3.研究"></a>3.研究</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1）对公开资源的研究</span><br><span class="line">	I.exploit-db</span><br><span class="line">	II.Google Hacking</span><br><span class="line">	III.渗透代码网站</span><br><span class="line">	IV.通用/缺省口令</span><br><span class="line">	V.厂商的漏洞警告</span><br><span class="line">2）私有环境下的研究</span><br><span class="line">	I.建立一个复制环境</span><br><span class="line">	II.测试安全配置</span><br><span class="line">	III.找出潜在攻击路径</span><br></pre></td></tr></table></figure>
+<h2 id="五、渗透攻击"><a href="#五、渗透攻击" class="headerlink" title="五、渗透攻击"></a>五、渗透攻击</h2><h3 id="1-精准打击"><a href="#1-精准打击" class="headerlink" title="1.精准打击"></a>1.精准打击</h3><h3 id="2-绕过防御机制"><a href="#2-绕过防御机制" class="headerlink" title="2.绕过防御机制"></a>2.绕过防御机制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1）反病毒</span><br><span class="line">	I.编码</span><br><span class="line">	II.加壳</span><br><span class="line">	III.白名单绕过</span><br><span class="line">	IV.进程注入</span><br><span class="line">	V.纯内存方式</span><br><span class="line">2）人工检查</span><br><span class="line">3）网络入侵防御系统</span><br><span class="line">4）DEP</span><br><span class="line">5）ASLR</span><br><span class="line">6）VA+NX（linux）</span><br><span class="line">7）w^x(openBSD)</span><br><span class="line">8）栈保护</span><br></pre></td></tr></table></figure>
+<h3 id="3-定制渗透攻击路径"><a href="#3-定制渗透攻击路径" class="headerlink" title="3.定制渗透攻击路径"></a>3.定制渗透攻击路径</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">1）最佳攻击路径</span><br><span class="line">2）零日攻击</span><br><span class="line">	I.Fuzzing</span><br><span class="line">	II.逆向分析</span><br><span class="line">	III.流量分析</span><br><span class="line">3）公开渗透代码的定制</span><br><span class="line">4）物理访问</span><br><span class="line">	I.认为因素</span><br><span class="line">	II.主机访问</span><br><span class="line">	III.USB接口访问</span><br><span class="line">	IV.防火墙</span><br><span class="line">	V.RFID</span><br><span class="line">	VI.中间人攻击</span><br><span class="line">	VII.路由协议</span><br><span class="line">	VIII.VLAN划分</span><br><span class="line">	IX.其他硬件（键盘记录器等）</span><br><span class="line">5）接近的访问(WiFi)</span><br><span class="line">	I.攻击AP</span><br><span class="line">	II.攻击用户</span><br><span class="line">	III.电子频谱分析</span><br><span class="line">6）拒绝服务/勒索</span><br><span class="line">7）Web</span><br><span class="line">	I.SQLi</span><br><span class="line">	II.XSS</span><br><span class="line">	III.CSRF</span><br><span class="line">	IV.信息泄露</span><br><span class="line">	V.其他OWASP TOP10</span><br></pre></td></tr></table></figure>
+<h3 id="4-绕过检测机制"><a href="#4-绕过检测机制" class="headerlink" title="4.绕过检测机制"></a>4.绕过检测机制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）FW/WA/IDS/IPS绕过</span><br><span class="line">2）绕过管理员</span><br><span class="line">3）绕过数据泄露防护系统</span><br></pre></td></tr></table></figure>
+<h3 id="5-触发攻击响应控制措施"><a href="#5-触发攻击响应控制措施" class="headerlink" title="5.触发攻击响应控制措施"></a>5.触发攻击响应控制措施</h3><h3 id="6-渗透代码测试"><a href="#6-渗透代码测试" class="headerlink" title="6.渗透代码测试"></a>6.渗透代码测试</h3><h3 id="7-攻击类型"><a href="#7-攻击类型" class="headerlink" title="7.攻击类型"></a>7.攻击类型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1）客户端攻击</span><br><span class="line">	I.Phishing</span><br><span class="line">2）服务端攻击</span><br><span class="line">3）带外攻击</span><br></pre></td></tr></table></figure>
+<h2 id="六、后渗透攻击"><a href="#六、后渗透攻击" class="headerlink" title="六、后渗透攻击"></a>六、后渗透攻击</h2><h3 id="1-基础设施分析"><a href="#1-基础设施分析" class="headerlink" title="1.基础设施分析"></a>1.基础设施分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1）当前网络连接分析</span><br><span class="line">2）网络接口查询</span><br><span class="line">3）VPN检测</span><br><span class="line">4）路由检测，包括静态路由</span><br><span class="line">5）网络邻居与系统探查</span><br><span class="line">6）使用的网络协议</span><br><span class="line">7）使用的代理服务器</span><br><span class="line">8）网络拓扑</span><br></pre></td></tr></table></figure>
+<h3 id="2-高价值目标识别"><a href="#2-高价值目标识别" class="headerlink" title="2.高价值目标识别"></a>2.高价值目标识别</h3><h3 id="3-掠夺敏感信息"><a href="#3-掠夺敏感信息" class="headerlink" title="3.掠夺敏感信息"></a>3.掠夺敏感信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1）视频监控器和摄像头</span><br><span class="line">2）从可用通道获取敏感数据</span><br><span class="line">3）查找共享目录</span><br><span class="line">4）音频监控</span><br><span class="line">	I.VoIP</span><br><span class="line">	II.麦克风记录</span><br><span class="line">5）高价值文件</span><br><span class="line">6）数据库查点</span><br><span class="line">7）WiFi</span><br><span class="line">8）源代码库</span><br><span class="line">9）识别出客户管理应用</span><br><span class="line">10）备份</span><br><span class="line">	I.本地备份文件</span><br><span class="line">	II.中央备份服务器</span><br><span class="line">	III.远程备份方案</span><br><span class="line">	IV.录音存储备份</span><br></pre></td></tr></table></figure>
+<h3 id="4-业务影响攻击"><a href="#4-业务影响攻击" class="headerlink" title="4.业务影响攻击"></a>4.业务影响攻击</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1）业务盈利途径</span><br><span class="line">2）窃取业务盈利</span><br></pre></td></tr></table></figure>
+<h3 id="5-进一步对基础设施的渗透"><a href="#5-进一步对基础设施的渗透" class="headerlink" title="5.进一步对基础设施的渗透"></a>5.进一步对基础设施的渗透</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1）僵尸网络</span><br><span class="line">2）入侵内网</span><br><span class="line">3）检查历史/日志</span><br><span class="line">	I.Windows</span><br><span class="line">	II.Linux</span><br><span class="line">	III.浏览器</span><br></pre></td></tr></table></figure>
+<h3 id="6-掩踪灭迹"><a href="#6-掩踪灭迹" class="headerlink" title="6.掩踪灭迹"></a>6.掩踪灭迹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1）记录渗透攻击过程步骤</span><br><span class="line">2）确保清理现场</span><br><span class="line">3）删除测试数据</span><br><span class="line">4）对证据进行打包和加密</span><br><span class="line">5）必要时从备份恢复数据</span><br></pre></td></tr></table></figure>
+<h3 id="7-持续性存在"><a href="#7-持续性存在" class="headerlink" title="7.持续性存在"></a>7.持续性存在</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1）自启动恶意代码</span><br><span class="line">2）反向连接</span><br><span class="line">3）Rootkit</span><br><span class="line">	I.用户模式</span><br><span class="line">	II.内核模式</span><br><span class="line">4）命令控制媒介（http,dns,tcp,icmp）</span><br><span class="line">5）后门</span><br><span class="line">6）植入代码</span><br><span class="line">7）口令保护的VPN</span><br></pre></td></tr></table></figure>
+<h2 id="七、报告"><a href="#七、报告" class="headerlink" title="七、报告"></a>七、报告</h2><h3 id="1-执行层面的报告"><a href="#1-执行层面的报告" class="headerlink" title="1.执行层面的报告"></a>1.执行层面的报告</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1）业务影响</span><br><span class="line">2）定制</span><br><span class="line">3）与业务部门的谈话</span><br><span class="line">4）影响底线</span><br><span class="line">5）策略方法路径</span><br><span class="line">6）成熟度模型</span><br><span class="line">7）风险评估术语说明</span><br><span class="line">8）攻击过程与Gant图时间线</span><br><span class="line">9）风险评估</span><br><span class="line">	I.评估事故频率</span><br><span class="line">		I）可能的事件频率</span><br><span class="line">		II）估计威胁能力（从阶段3威胁建模阶段而来）</span><br><span class="line">		III）评估控制措施强度（从阶段6）</span><br><span class="line">		IV）安全漏洞与弱点评估（从阶段5）</span><br><span class="line">		V）所需技能要求</span><br><span class="line">		VI）所需访问权限等级</span><br><span class="line">	II.每次事故的损失估计</span><br><span class="line">	III.风险推算</span><br><span class="line">		I）威胁</span><br><span class="line">		II）漏洞</span><br><span class="line">		III）组合风险值</span><br></pre></td></tr></table></figure>
+<h3 id="2-技术报告"><a href="#2-技术报告" class="headerlink" title="2.技术报告"></a>2.技术报告</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">1）识别系统性问题和技术根源分析</span><br><span class="line">2）渗透测试评价指标</span><br><span class="line">	I.范围内的系统数量</span><br><span class="line">	II.范围内的应用场景数量</span><br><span class="line">	III.范围内的业务流程数量</span><br><span class="line">	IV.被检测到的次数</span><br><span class="line">	V.漏洞/漏洞主机数量</span><br><span class="line">	VI.被攻陷的系统数量</span><br><span class="line">	VII.成功攻击的应用场景数量</span><br><span class="line">	VIII.攻陷的业务流程次数</span><br><span class="line">	IX....</span><br><span class="line">3）技术发现</span><br><span class="line">	I.描述</span><br><span class="line">	II.截图</span><br><span class="line">	III.抓取的请求与响应</span><br><span class="line">	IV.概念验证性样本代码</span><br><span class="line">4）可重现结果</span><br><span class="line">	I.测试用例</span><br><span class="line">	II.触发错误</span><br><span class="line">5）应急响应和监控能力</span><br><span class="line">	I.情报收集阶段</span><br><span class="line">	II.漏洞分析阶段</span><br><span class="line">	III.渗透攻击阶段</span><br><span class="line">	IV.后渗透攻击阶段</span><br><span class="line">	V.其他方面（如对第三方的通知等）</span><br><span class="line">6）标准组成部分</span><br><span class="line">	I.方法体系</span><br><span class="line">	II.目标</span><br><span class="line">	III.范围</span><br><span class="line">	IV.发现摘要</span><br><span class="line">	V.风险评定的术语附录</span><br></pre></td></tr></table></figure>
+<h3 id="3-提交报告"><a href="#3-提交报告" class="headerlink" title="3.提交报告"></a>3.提交报告</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1）初始报告</span><br><span class="line">2）客户对报告的评审结果</span><br><span class="line">3）对报告的修订</span><br><span class="line">4）最终报告</span><br><span class="line">5）报告初稿与最终报告的版本管理</span><br><span class="line">6）展示报告</span><br><span class="line">	I.技术层面</span><br><span class="line">	II.管理层面</span><br><span class="line">7）工作例会/培训</span><br><span class="line">	I.差距分析（技能/培训）</span><br><span class="line">8）保存证据和其他非产权的数据</span><br><span class="line">9）纠正过程</span><br><span class="line">	I.分流</span><br><span class="line">	II.安全成熟度模型</span><br><span class="line">	III.工作进展计划</span><br><span class="line">	IV.长期解决方案</span><br><span class="line">	V.定义限制条件</span><br><span class="line">9）开发定制工具</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/04/13/PTES（渗透测试技术指南）/">PTES（渗透测试技术指南:诸葛建伟翻译）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">HackerFox</a></p>
+        <p><span>发布时间:</span>2017-04-13, 13:09:51</p>
+        <p><span>最后更新:</span>2018-03-10, 16:13:34</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/13/PTES（渗透测试技术指南）/" title="PTES（渗透测试技术指南:诸葛建伟翻译）">http://a6361117.github.io/2017/04/13/PTES（渗透测试技术指南）/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://a6361117.github.io/2017/04/13/PTES（渗透测试技术指南）/　　作者: HackerFox" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/03/02/使用github搭建一个博客/">
+                    使用Github+Hexo搭建一个博客
+                </a>
+            </div>
+        
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、前期交互阶段"><span class="toc-number">1.</span> <span class="toc-text">一、前期交互阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-确定范围"><span class="toc-number">1.1.</span> <span class="toc-text">1.确定范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-目标规划"><span class="toc-number">1.2.</span> <span class="toc-text">2.目标规划</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-测试术语和定义"><span class="toc-number">1.3.</span> <span class="toc-text">3.测试术语和定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-建立通讯渠道"><span class="toc-number">1.4.</span> <span class="toc-text">4.建立通讯渠道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-交互确定规则"><span class="toc-number">1.5.</span> <span class="toc-text">5.交互确定规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-存在的防御能力和技术"><span class="toc-number">1.6.</span> <span class="toc-text">6.存在的防御能力和技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-保护级自己"><span class="toc-number">1.7.</span> <span class="toc-text">7.保护级自己</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、情报搜集"><span class="toc-number">2.</span> <span class="toc-text">二、情报搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-目标选择"><span class="toc-number">2.1.</span> <span class="toc-text">1.目标选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-开放渠道情报"><span class="toc-number">2.2.</span> <span class="toc-text">2.开放渠道情报</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-白盒搜集"><span class="toc-number">2.3.</span> <span class="toc-text">3.白盒搜集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-人力资源情报"><span class="toc-number">2.4.</span> <span class="toc-text">4.人力资源情报</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-踩点"><span class="toc-number">2.5.</span> <span class="toc-text">5.踩点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-识别防御机制"><span class="toc-number">2.6.</span> <span class="toc-text">6.识别防御机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、威胁建模"><span class="toc-number">3.</span> <span class="toc-text">三、威胁建模</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-业务资产分析"><span class="toc-number">3.1.</span> <span class="toc-text">1.业务资产分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-业务流程分析"><span class="toc-number">3.2.</span> <span class="toc-text">2.业务流程分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-威胁对手-社区分析"><span class="toc-number">3.3.</span> <span class="toc-text">3.威胁对手/社区分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-威胁能力分析"><span class="toc-number">3.4.</span> <span class="toc-text">4.威胁能力分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-找出相关公司备攻击的新闻"><span class="toc-number">3.5.</span> <span class="toc-text">5.找出相关公司备攻击的新闻</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、漏洞分析"><span class="toc-number">4.</span> <span class="toc-text">四、漏洞分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-测试"><span class="toc-number">4.1.</span> <span class="toc-text">1.测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-验证"><span class="toc-number">4.2.</span> <span class="toc-text">2.验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-研究"><span class="toc-number">4.3.</span> <span class="toc-text">3.研究</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、渗透攻击"><span class="toc-number">5.</span> <span class="toc-text">五、渗透攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-精准打击"><span class="toc-number">5.1.</span> <span class="toc-text">1.精准打击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-绕过防御机制"><span class="toc-number">5.2.</span> <span class="toc-text">2.绕过防御机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-定制渗透攻击路径"><span class="toc-number">5.3.</span> <span class="toc-text">3.定制渗透攻击路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-绕过检测机制"><span class="toc-number">5.4.</span> <span class="toc-text">4.绕过检测机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-触发攻击响应控制措施"><span class="toc-number">5.5.</span> <span class="toc-text">5.触发攻击响应控制措施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-渗透代码测试"><span class="toc-number">5.6.</span> <span class="toc-text">6.渗透代码测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-攻击类型"><span class="toc-number">5.7.</span> <span class="toc-text">7.攻击类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、后渗透攻击"><span class="toc-number">6.</span> <span class="toc-text">六、后渗透攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-基础设施分析"><span class="toc-number">6.1.</span> <span class="toc-text">1.基础设施分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-高价值目标识别"><span class="toc-number">6.2.</span> <span class="toc-text">2.高价值目标识别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-掠夺敏感信息"><span class="toc-number">6.3.</span> <span class="toc-text">3.掠夺敏感信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-业务影响攻击"><span class="toc-number">6.4.</span> <span class="toc-text">4.业务影响攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-进一步对基础设施的渗透"><span class="toc-number">6.5.</span> <span class="toc-text">5.进一步对基础设施的渗透</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-掩踪灭迹"><span class="toc-number">6.6.</span> <span class="toc-text">6.掩踪灭迹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-持续性存在"><span class="toc-number">6.7.</span> <span class="toc-text">7.持续性存在</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、报告"><span class="toc-number">7.</span> <span class="toc-text">七、报告</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-执行层面的报告"><span class="toc-number">7.1.</span> <span class="toc-text">1.执行层面的报告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-技术报告"><span class="toc-number">7.2.</span> <span class="toc-text">2.技术报告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-提交报告"><span class="toc-number">7.3.</span> <span class="toc-text">3.提交报告</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"PTES（渗透测试技术指南:诸葛建伟翻译）　| HackerFox　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/03/02/使用github搭建一个博客/" title="上一篇: 使用Github+Hexo搭建一个博客">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/使用github搭建一个博客/">使用Github+Hexo搭建一个博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/13/PTES（渗透测试技术指南）/">PTES（渗透测试技术指南:诸葛建伟翻译）</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2018 HackerFox
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+            
+            
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
